@@ -6,7 +6,7 @@ from scrapy import log
 import pymongo
 
 
-class QuotesbotPipeline(object):
+class SimplePipeline(object):
     def process_item(self, item, spider):
         return item
 
