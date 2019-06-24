@@ -9,7 +9,13 @@ class ToScrapeSpiderXPath(scrapy.Spider):
     ]
 
     def parse(self, response):
-        print('//*[@id="search_list_layout"]/li[2]/a[1]/div[2]/strong')
+        print('//*[@id="search_list_layout"]/li[1]/a[1]/div[2]/strong')
+        for book in response.xpath('//*[@id="search_list_layout"]'):
+            yield {
+                'title': book.xpath('//*[@id="search_list_layout"]/li[1]/a[1]/div[2]/strong/text()').extract_first()
+            }
+            print(book.xpath('//*[@id="search_list_layout"]/li[1]/a[1]/div[2]/strong/text()').extract_first())
+
         #for quote in response.xpath('//div[@class="m-brick grid-item boxy bqQt"]'):
         #    yield {
         #        'text': quote.xpath('.//div/div[1]/div/a/text()').extract_first(),
@@ -18,3 +24,6 @@ class ToScrapeSpiderXPath(scrapy.Spider):
         #    }
 
 # //*[@id="search_list_layout"]/li[2]/a[1]/div[2]/strong
+
+# //*[@id="search_list_layout"]/li[2]/a[1]/div[2]/strong
+
